@@ -22,13 +22,6 @@ body {
     height: 100vh;
 }
 
-.search-image {
-    width: 200px;
-    height: 200px;
-    display: block;
-    margin: 0 auto;
-}
-
 .search-text {
     padding: 4px;
 }
@@ -51,6 +44,10 @@ body {
     border-radius: 20px;
     padding: 20px;
     background-color: white;
-    width: 300px;
+    width: 600px;
     border-top: lightgray 2px solid;
+}
+
+.id{
+    border-bottom: lightgray solid 2px;
 }

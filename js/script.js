@@ -6,7 +6,7 @@ formEl.addEventListener('submit', async (e) => {
     e.preventDefault();
     const inputsValue = Object.fromEntries(new FormData(e.target));
     const response = await fetch(`
-    https://api.github.com/search/repositories?q=${inputsValue}
+    https://api.github.com/search/repositories?q=${inputsValue.name}+in:name&per_page=10
   `);
 
     if (response.ok) {
@@ -15,7 +15,7 @@ formEl.addEventListener('submit', async (e) => {
         mainEl.appendChild(wrapper);
         inputEl.value = '';
     } else {
-        alert("Пользователь не найден")
+        alert("Репозиторий не найден")
     }
 })
 
@@ -37,9 +37,9 @@ function createRepoEl(data) {
     element.classList.add('repo');
     data.items.forEach(item => (
         element.innerHTML += `
-    <p class="search-text"><span>Название: </span>${item.name}</p>
+    <p class="search-text"><span>Название: </span><a href="${item.html_url}">${item.name}</a></p>
     <p class="search-text"><span>Полное название: </span>${item.full_name}</p>
-    <p class="search-text"><span>id: </span>${item.id}</p>
+    <p class="search-text id"><span>id: </span>${item.id}</p>
   `
     ))
 
